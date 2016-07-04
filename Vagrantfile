@@ -21,7 +21,9 @@ Vagrant.configure("2") do |config|
       config.hostmanager.ignore_private_ip = false
   end
 
-  config.omnibus.chef_version = "12.0.1"
+  if Vagrant.has_plugin?("vagrant-omnibus")
+      config.omnibus.chef_version = "12.0.1"
+  end
 
   config.vm.define :web, primary: true do |web|
     web.vm.network "private_network", ip: "192.168.140.10"
