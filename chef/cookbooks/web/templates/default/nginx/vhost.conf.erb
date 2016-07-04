@@ -1,0 +1,91 @@
+server {
+  server_name <%= @hostname %>;
+  root <%= node['mage2']['nginx']['docroot'] %>;
+
+  access_log /var/log/nginx/<%= @hostname %>.access.log;
+  error_log /var/log/nginx/<%= @hostname %>.error.log;
+
+  # NOTE: this is an upstream webserver; see gateway cookbook for ports 80 and 443
+  listen 8080;
+
+  client_max_body_size          16m;
+  client_body_buffer_size       2m;
+  client_header_buffer_size     16k;
+  large_client_header_buffers   8 8k;
+
+  # deny access to dotfiles
+  location ~ /\. {
+      deny all;
+      access_log off;
+      log_not_found off;
+  }
+
+  index index.html index.php;
+
+  # default ENV vars
+  fastcgi_param           MAGE_RUN_CODE   <%= @config['mage_run_code'] || 'base' %>
+  fastcgi_param           MAGE_RUN_TYPE   <%= @config['mage_run_type'] || 'website' %>;
+  fastcgi_read_timeout    <%= @config['fastcgi_read_timeout'] || '90s' %>;
+  fastcgi_send_timeout    <%= @config['fastcgi_send_timeout'] || '90s' %>;
+  fastcgi_index           index.php;
+  fastcgi_param           SCRIPT_FILENAME $document_root$fastcgi_script_name;
+  fastcgi_param           SCRIPT_NAME $fastcgi_script_name;
+
+<%- if node.chef_environment == 'development' -%>
+  fastcgi_param           MAGE_IS_DEVELOPER_MODE 1;
+<% end -%>
+
+  include fastcgi_params;
+
+  # https://newrelic.com/docs/features/request-queuing-and-tracking-front-end-time
+  fastcgi_param X-Request-Start "t=${msec}000";
+
+  # performance tuning
+  # any reply by the FastCGI process in the backend greater than 2M goes to disk
+  fastcgi_buffers 512 16k;
+  fastcgi_buffer_size 512k;
+  fastcgi_busy_buffers_size 512k;
+
+  location = /robots.txt {
+      allow all;
+      try_files $uri =404;
+  }
+
+  # Disable PHP execution in var and media
+  location /var { location ~ \.php$ {return 403;} }
+  location /media { location ~ \.php$ {return 403;} }
+
+  location ~* \.(lock|md|sh|sql|zip|tgz|bz|markdown)(\?[0-9]+)?$ {
+    deny all;
+  }
+
+  location ~* (.+)\.(\d+)\.(js|css|png|jpg|jpeg|gif)$ {
+    try_files $uri $1.$3;
+    access_log off;
+    log_not_found off;
+    expires 21d;
+    add_header Cache-Control "public";
+  }
+
+  location ~* \.(jpg|jpeg|gif|css|png|js|ico|txt|swf|xml|svg|svgz|mp4|ogg|ogv|eot|woff|ttf)(\?[0-9]+)?$ {
+    access_log off;
+    log_not_found off;
+    expires 21d;
+    add_header Cache-Control "public";
+  }
+
+  location ~ \.php$ {
+    expires off;
+    try_files $uri =404;
+    fastcgi_pass unix:/var/run/php-fpm-www.sock;
+  }
+
+  location / {
+    try_files $uri @app_server;
+  }
+
+  location @app_server {
+    try_files $uri $uri/ /index.php =404;
+    fastcgi_pass unix:/var/run/php-fpm-www.sock;
+  }
+}

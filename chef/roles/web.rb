@@ -2,14 +2,13 @@ name 'web'
 description 'Make sure the node smells like a web box'
 
 run_list(
-  'recipe[xer-web]',
+  'recipe[web]',
 )
 
 default_attributes(
   'mage2' => {
     'packages' => [
       'gnupg',
-      'mariadb', # provides client libraries
       'nginx'
     ],
     'nginx' => {

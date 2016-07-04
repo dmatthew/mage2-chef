@@ -45,7 +45,7 @@ Vagrant.configure("2") do |config|
         chef.environment       = "development"
 
         chef.add_role "base"
-        #chef.add_role "web"
+        chef.add_role "web"
     end
   end
 
