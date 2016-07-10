@@ -16,7 +16,6 @@ default_attributes(
             'lsof',
             'lvm2',
             'make',
-            'man',
             'ntp',
             'openssh-server',
             'openssl',

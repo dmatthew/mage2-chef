@@ -23,7 +23,7 @@ server {
   index index.html index.php;
 
   # default ENV vars
-  fastcgi_param           MAGE_RUN_CODE   <%= @config['mage_run_code'] || 'base' %>
+  fastcgi_param           MAGE_RUN_CODE   <%= @config['mage_run_code'] || 'base' %>;
   fastcgi_param           MAGE_RUN_TYPE   <%= @config['mage_run_type'] || 'website' %>;
   fastcgi_read_timeout    <%= @config['fastcgi_read_timeout'] || '90s' %>;
   fastcgi_send_timeout    <%= @config['fastcgi_send_timeout'] || '90s' %>;

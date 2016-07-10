@@ -1,0 +1,20 @@
+[www]
+listen = <%= node['mage2']['php']['fpm']['listen'] %>
+listen.owner = <%= node['mage2']['php']['fpm']['listen_owner'] %>
+listen.group = <%= node['mage2']['php']['fpm']['listen_group'] %>
+listen.mode = 0666
+listen.allowed_clients = 127.0.0.1
+
+user = <%= node['mage2']['php']['fpm']['user'] %>
+group = <%= node['mage2']['php']['fpm']['group'] %>
+
+pm = dynamic
+pm.max_children = <%= node['mage2']['php']['fpm']['max_children'] %>
+pm.start_servers = <%= node['mage2']['php']['fpm']['start_servers'] %>
+pm.min_spare_servers = <%= node['mage2']['php']['fpm']['min_spare'] %>
+pm.max_spare_servers = <%= node['mage2']['php']['fpm']['max_spare'] %>
+
+; Chef values will be output below
+<% @options.sort_by { |key, val| key }.each do |option, value| -%>
+<%= "#{option} = #{value}" %>
+<% end -%>

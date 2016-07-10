@@ -1,14 +1,14 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.require_version "~> 1.6"
+Vagrant.require_version "~> 1.7"
 
 Vagrant.configure("2") do |config|
   config.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", :mount_options => ["dmode=777","fmode=777"]
   config.nfs.map_uid = Process.uid
   config.nfs.map_gid = Process.gid
 
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "bento/ubuntu-16.04"
 
   if Vagrant.has_plugin?("vagrant-cachier")
       config.cache.scope = :box
@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
   end
 
   if Vagrant.has_plugin?("vagrant-omnibus")
-      config.omnibus.chef_version = "12.0.1"
+      config.omnibus.chef_version = "12.11.18"
   end
 
   config.vm.define :web, primary: true do |web|
