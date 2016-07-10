@@ -19,6 +19,6 @@ end
 
 include_recipe "web::nginx"
 include_recipe "web::php"
-#include_recipe "web::magerun"
-#include_recipe "web::composer"
+include_recipe "web::magerun"
+include_recipe "web::composer"
 #include_recipe "web::magento"
