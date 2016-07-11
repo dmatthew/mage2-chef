@@ -6,7 +6,7 @@ server {
   error_log /var/log/nginx/<%= @hostname %>.error.log;
 
   # NOTE: this is an upstream webserver; see gateway cookbook for ports 80 and 443
-  listen 8080;
+  listen 80;
 
   client_max_body_size          16m;
   client_body_buffer_size       2m;
