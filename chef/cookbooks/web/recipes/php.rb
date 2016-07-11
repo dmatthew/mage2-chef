@@ -3,6 +3,12 @@
 # Recipe:: php
 #
 
+node['mage2']['php']['packages'].each do |pkg|
+    package pkg do
+        action :install
+    end
+end
+
 if node.chef_environment == 'development'
   cookbook_file 'installing custom xdebug configs'  do
     path   '/etc/php/7.0/mods-available/xdebug-config.ini'
