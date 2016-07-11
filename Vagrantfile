@@ -10,6 +10,13 @@ Vagrant.configure("2") do |config|
 
   config.vm.box = "bento/ubuntu-16.04"
 
+  # ensure berkshelf plugin is enabled
+  if Vagrant.has_plugin?("vagrant-berkshelf")
+    config.berkshelf.enabled = true
+  else
+    raise "FATAL: Berkshelf not present! Please run 'vagrant plugin install vagrant-berkshelf'"
+  end
+
   if Vagrant.has_plugin?("vagrant-cachier")
       config.cache.scope = :box
   end
@@ -60,8 +67,8 @@ Vagrant.configure("2") do |config|
         chef.environment       = "development"
 
         chef.add_role "base"
-        #chef.add_role "data"
-        #chef.add_role "cache"
+        chef.add_role "data"
+        chef.add_role "cache"
     end
   end
 end

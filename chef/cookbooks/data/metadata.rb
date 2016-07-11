@@ -1,0 +1,12 @@
+name             'data'
+maintainer       ''
+maintainer_email ''
+license          ''
+description      'Data'
+long_description 'Data'
+version          '0.1'
+
+depends 'mysql'
+depends 'database'
+depends 'base'
+depends 'mysql2_chef_gem'

@@ -1,0 +1,71 @@
+DEPENDENCIES
+  base
+    path: chef/cookbooks/base
+  cache
+    path: chef/cookbooks/cache
+  data
+    path: chef/cookbooks/data
+  database
+  mysql
+  redisio
+  web
+    path: chef/cookbooks/web
+
+GRAPH
+  apt (4.0.1)
+    compat_resource (>= 12.10)
+  base (0.1.0)
+  build-essential (6.0.0)
+    compat_resource (>= 12.10)
+    mingw (>= 1.1)
+    seven_zip (>= 0.0.0)
+  cache (0.1.0)
+    redisio (>= 0.0.0)
+  chef-sugar (3.3.0)
+  chef_handler (1.4.0)
+  compat_resource (12.10.6)
+  data (0.1.0)
+    base (>= 0.0.0)
+    database (>= 0.0.0)
+    mysql (>= 0.0.0)
+    mysql2_chef_gem (>= 0.0.0)
+  database (5.1.2)
+    postgresql (>= 1.0.0)
+  mariadb (0.3.1)
+    apt (>= 0.0.0)
+    yum (>= 0.0.0)
+    yum-epel (>= 0.0.0)
+  mingw (1.2.2)
+    compat_resource (>= 0.0.0)
+    seven_zip (>= 0.0.0)
+  mysql (7.2.0)
+    smf (>= 0.0.0)
+    yum-mysql-community (>= 0.0.0)
+  mysql2_chef_gem (1.1.0)
+    build-essential (>= 0.0.0)
+    mariadb (>= 0.0.0)
+    mysql (>= 6.0)
+  openssl (4.4.0)
+    chef-sugar (>= 3.1.1)
+  postgresql (4.0.6)
+    apt (>= 1.9.0)
+    build-essential (>= 0.0.0)
+    openssl (~> 4.0)
+  rbac (1.0.3)
+  redisio (2.4.2)
+    build-essential (>= 0.0.0)
+    ulimit (>= 0.1.2)
+  seven_zip (2.0.1)
+    windows (>= 1.2.2)
+  smf (2.2.8)
+    rbac (>= 1.0.1)
+  ulimit (0.4.0)
+  web (0.1.0)
+    base (>= 0.0.0)
+  windows (1.44.1)
+    chef_handler (>= 0.0.0)
+  yum (3.11.0)
+  yum-epel (0.7.0)
+    yum (>= 3.6.3)
+  yum-mysql-community (0.2.0)
+    yum (>= 3.2)
