@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
     web.vm.hostname = "web.dev.mage2-chef.com"
 
     if Vagrant.has_plugin?("vagrant-hostmanager")
-        web.hostmanager.aliases = %w(dev.mage2-chef.com)
+        web.hostmanager.aliases = ['dev.mage2-chef.com']
     end
 
     web.vm.provider "virtualbox" do |v|

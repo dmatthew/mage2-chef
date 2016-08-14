@@ -61,12 +61,12 @@ override_attributes(
   'mage2' => {
     'nginx' => {
       'www' => {
-        'servernames' => %w{dev.mage2-chef.com _}
+        'servernames' => ['dev.mage2-chef.com']
       },
       'www-upstream' => {
         'fastcgi_read_timeout'  => '300s',
         'fastcgi_send_timeout'  => '300s',
-        'servernames'          => %w(dev.mage2-chef.com),
+        'servernames'          => ['dev.mage2-chef.com'],
       }
     }
   }
