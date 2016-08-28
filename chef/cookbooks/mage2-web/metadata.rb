@@ -1,4 +1,4 @@
-name             'web'
+name             'mage2-web'
 maintainer       ''
 maintainer_email ''
 license          ''

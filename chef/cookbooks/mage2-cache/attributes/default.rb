@@ -1,0 +1,1 @@
+default['mage2']['redisio']['version'] = '3.2.1'

@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: base
+# Cookbook Name:: mage2-base
 # Recipe:: apt
 #
 

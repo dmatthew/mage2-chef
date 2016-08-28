@@ -1,4 +1,4 @@
-name             'cache'
+name             'mage2-cache'
 maintainer       ''
 maintainer_email ''
 license          ''

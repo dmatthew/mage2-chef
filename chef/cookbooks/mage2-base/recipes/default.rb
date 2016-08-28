@@ -1,10 +1,10 @@
 #
-# Cookbook Name:: base
+# Cookbook Name:: mage2-base
 # Recipe:: default
 #
 
-include_recipe "base::apt"
-include_recipe "base::packages"
+include_recipe "mage2-base::apt"
+include_recipe "mage2-base::packages"
 
 # set timezone to UTC
 link '/etc/localtime' do

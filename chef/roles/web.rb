@@ -2,7 +2,7 @@ name 'web'
 description 'Make sure the node smells like a web box'
 
 run_list(
-  'recipe[web]',
+  'recipe[mage2-web]',
 )
 
 default_attributes(

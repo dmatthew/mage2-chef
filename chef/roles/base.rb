@@ -1,7 +1,7 @@
 name 'base'
 
 run_list(
-    'recipe[base]',
+    'recipe[mage2-base]',
 )
 
 default_attributes(
