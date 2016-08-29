@@ -30,11 +30,11 @@ default['mage2']['php']['fpm']['max_spare'] = '3'
 # nginx defaults
 default['mage2']['nginx']['docroot'] = '/vagrant/pub'
 default['mage2']['nginx']['sendfile'] = 'off'
-default['mage2']['nginx']['hosts'] = [
+default['mage2']['nginx']['hosts'] = {
     'dev.mage2-chef.com' => {
         'mage_run_code' => 'base',
         'mage_run_type' => 'website',
         'fastcgi_read_timeout' => '300s',
         'fastcgi_send_timeout' => '300s'
     }
-]
+}
