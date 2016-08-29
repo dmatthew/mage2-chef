@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: web
+# Cookbook Name:: mage2-web
 # Recipe:: magento
 #
 
