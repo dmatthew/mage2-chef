@@ -18,6 +18,12 @@ mysql_service 'default' do
     action [:create, :start]
 end
 
+# TODO: mysql configuration
+#mysql_config 'default' do
+#    notifies :restart, 'mysql_service[default]'
+#    action :create
+#end
+
 mysql_connection_info = {
     :host     => node['mage2']['mysql']['host'],
     :port     => node['mage2']['mysql']['port'],
