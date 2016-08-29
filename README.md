@@ -14,6 +14,10 @@ Installation failed
 ```
 The above happens because of an issue with the `bento/ubuntu-16.04` box. Just reprovision, `vagrant reload --provision`, and you will be able to provision properly.
 
+## Attributes
+`node['mage2']['magento']['db']['host']`  
+`node['mage2']['nginx']['hosts']`
+
 ### Using the mysql CLI command
 ```
 mysql -S /var/run/mysql-default/mysqld.sock -u root -p
