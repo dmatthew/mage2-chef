@@ -52,28 +52,7 @@ if node.chef_environment == 'development'
     backup   false
     action   :create
     only_if  "test -d #{app_root}"
-    notifies :restart, 'service[php-fpm]', :delayed
     only_if  "test -d #{app_root}"
   end
 
-  cookbook_file 'installing phpinfo debug'  do
-    path   "#{docroot}/phpinfo.php"
-    source 'php/phpinfo.php'
-    group  'root'
-    owner  'root'
-    mode   0644
-    action :create
-    backup false
-  end
-
-end
-
-# define if not yet defined
-begin
-  resources('service[php-fpm]')
-rescue Chef::Exceptions::ResourceNotFound => e
-  service 'php-fpm' do
-    action [:enable, :start]
-    provider Chef::Provider::Service::Systemd
-  end
 end
