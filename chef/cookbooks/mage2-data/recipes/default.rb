@@ -28,7 +28,8 @@ mysql_connection_info = {
     :host     => node['mage2']['mysql']['host'],
     :port     => node['mage2']['mysql']['port'],
     :username => node['mage2']['mysql']['root_user'],
-    :password => node['mage2']['mysql']['root_pass']
+    :password => node['mage2']['mysql']['root_pass'],
+    :socket   => "/var/run/mysql-default/mysqld.sock"
 }
 
 # create a mysql database
