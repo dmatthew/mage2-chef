@@ -17,7 +17,7 @@ if node.chef_environment == 'development'
     end
 end
 
-include_recipe "web::nginx"
-include_recipe "web::php"
-include_recipe "web::composer"
-include_recipe "web::magento"
+include_recipe "mage2-web::nginx"
+include_recipe "mage2-web::php"
+include_recipe "mage2-web::composer"
+include_recipe "mage2-web::magento"
