@@ -2,7 +2,7 @@
 Vagrant VM provisioned with Chef for use with Magento 2
 
 ### Possible Errors During Vagrant Setup
-####If you are using an Ubuntu 16.04 box:
+#### If you are using an Ubuntu 16.04 box:
 * Make sure you are using Vagrant version >= 1.8.5 and Virtualbox version >= 5.x, because most Ubuntu 16.04 boxes are buggy and this should fix _most_ issues.
 
 If you get an error with something like this:
